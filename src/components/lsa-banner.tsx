@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, X } from "lucide-react";
+import { Briefcase, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { LsaEnquiryForm } from "@/components/lsa-enquiry-form";
+import { JobApplicationForm } from "@/components/job-application-form";
 
 export function LsaBanner() {
   const [open, setOpen] = useState(false);
@@ -38,23 +38,23 @@ export function LsaBanner() {
               onClick={() => setOpen(true)}
               className="flex items-center gap-2.5 rounded-lg bg-[#97BCC8] px-5 py-3 text-sm font-heading font-semibold text-white shadow-lg shadow-[#97BCC8]/25 hover:bg-[#7eaab7] hover:shadow-xl hover:shadow-[#97BCC8]/30 transition-all hover:-translate-y-0.5"
             >
-              <Users size={16} />
-              <span>Need a Learning Support Assistant?</span>
+              <Briefcase size={16} />
+              <span>Apply for a LSA Role</span>
             </button>
           </div>
         </motion.div>
       </AnimatePresence>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-md max-h-[80vh] overflow-y-auto rounded-none p-0">
+        <DialogContent className="w-[95vw] max-w-xl sm:max-w-xl md:max-w-2xl max-h-[95vh] overflow-y-auto rounded-none sm:rounded-none p-0">
           <div className="p-4 md:p-5">
             <DialogHeader className="sr-only">
-              <DialogTitle>Request a Learning Support Assistant</DialogTitle>
+              <DialogTitle>Apply for a Learning Support Assistant Role</DialogTitle>
               <DialogDescription>
-                Fill out the form and we will match you with the right support.
+                Fill out the form and attach your CV to apply.
               </DialogDescription>
             </DialogHeader>
-            <LsaEnquiryForm onClose={() => setOpen(false)} />
+            <JobApplicationForm compact onSuccess={() => setOpen(false)} />
           </div>
         </DialogContent>
       </Dialog>

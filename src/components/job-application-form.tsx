@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { submitNetlifyFormWithFile } from "@/lib/netlify-forms";
+import { cn } from "@/lib/utils";
 
 const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -26,7 +27,14 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
-export function JobApplicationForm() {
+interface JobApplicationFormProps {
+  /** Tighter spacing/sizing so the whole form fits in one view, e.g. inside a dialog. */
+  compact?: boolean;
+  /** Called after a successful submission (e.g. to close a dialog). */
+  onSuccess?: () => void;
+}
+
+export function JobApplicationForm({ compact = false, onSuccess }: JobApplicationFormProps) {
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [cvFile, setCvFile] = useState<File | null>(null);
@@ -91,6 +99,7 @@ export function JobApplicationForm() {
       });
       form.reset();
       clearFile();
+      onSuccess?.();
     } catch {
       toast({
         title: "Something went wrong",
@@ -103,18 +112,27 @@ export function JobApplicationForm() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl rounded-lg bg-card p-5 md:p-6 shadow-sm">
+    <div
+      className={cn(
+        "mx-auto w-full",
+        compact ? "max-w-xl" : "max-w-2xl rounded-lg bg-card p-5 shadow-sm md:p-6",
+      )}
+    >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} className={cn(compact ? "space-y-2.5" : "space-y-4")}>
+          <div className={cn("grid gap-3 grid-cols-2", !compact && "md:gap-4")}>
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-heading text-sm">Name</FormLabel>
+                  <FormLabel className="font-heading text-xs md:text-sm">Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Jane Doe" {...field} className="rounded-md bg-background" />
+                    <Input
+                      placeholder="Jane Doe"
+                      {...field}
+                      className={cn("rounded-md bg-background", compact && "h-9 text-sm")}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -125,9 +143,14 @@ export function JobApplicationForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-heading text-sm">Email</FormLabel>
+                  <FormLabel className="font-heading text-xs md:text-sm">Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="jane@example.com" type="email" {...field} className="rounded-md bg-background" />
+                    <Input
+                      placeholder="jane@example.com"
+                      type="email"
+                      {...field}
+                      className={cn("rounded-md bg-background", compact && "h-9 text-sm")}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -135,15 +158,20 @@ export function JobApplicationForm() {
             />
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className={cn("grid gap-3 grid-cols-2", !compact && "md:gap-4")}>
             <FormField
               control={form.control}
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-heading text-sm">Phone (Optional)</FormLabel>
+                  <FormLabel className="font-heading text-xs md:text-sm">Phone (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="+971 50 123 4567" type="tel" {...field} className="rounded-md bg-background" />
+                    <Input
+                      placeholder="+971 50 123 4567"
+                      type="tel"
+                      {...field}
+                      className={cn("rounded-md bg-background", compact && "h-9 text-sm")}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -154,9 +182,13 @@ export function JobApplicationForm() {
               name="position"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-heading text-sm">Role Applying For</FormLabel>
+                  <FormLabel className="font-heading text-xs md:text-sm">Role Applying For</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Learning Support Assistant" {...field} className="rounded-md bg-background" />
+                    <Input
+                      placeholder="e.g. Learning Support Assistant"
+                      {...field}
+                      className={cn("rounded-md bg-background", compact && "h-9 text-sm")}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -169,11 +201,16 @@ export function JobApplicationForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-heading text-sm">Tell us about your experience (Optional)</FormLabel>
+                <FormLabel className="font-heading text-xs md:text-sm">
+                  {compact ? "Experience (Optional)" : "Tell us about your experience (Optional)"}
+                </FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="A brief note about your background and experience..."
-                    className="min-h-[100px] resize-none rounded-lg bg-background"
+                    className={cn(
+                      "resize-none rounded-lg bg-background",
+                      compact ? "min-h-[50px] text-sm" : "min-h-[100px]",
+                    )}
                     {...field}
                   />
                 </FormControl>
@@ -183,22 +220,25 @@ export function JobApplicationForm() {
           />
 
           <div>
-            <FormLabel className="font-heading text-sm">Upload CV</FormLabel>
-            <div className="mt-2">
+            <FormLabel className="font-heading text-xs md:text-sm">Upload CV</FormLabel>
+            <div className="mt-1.5">
               {!cvFile ? (
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-input bg-background px-4 py-8 text-center transition-colors hover:border-accent hover:bg-accent/5"
+                  className={cn(
+                    "flex w-full flex-col items-center justify-center gap-1.5 rounded-lg border-2 border-dashed border-input bg-background text-center transition-colors hover:border-accent hover:bg-accent/5",
+                    compact ? "px-4 py-3" : "px-4 py-8",
+                  )}
                 >
-                  <UploadCloud className="h-6 w-6 text-foreground/60" />
-                  <span className="text-sm font-medium text-foreground/80">
+                  <UploadCloud className={cn("text-foreground/60", compact ? "h-5 w-5" : "h-6 w-6")} />
+                  <span className={cn("font-medium text-foreground/80", compact ? "text-xs" : "text-sm")}>
                     Click to upload your CV
                   </span>
                   <span className="text-xs text-foreground/50">PDF or Word, up to 5MB</span>
                 </button>
               ) : (
-                <div className="flex items-center justify-between rounded-lg border border-input bg-background px-4 py-3">
+                <div className="flex items-center justify-between rounded-lg border border-input bg-background px-4 py-2.5">
                   <div className="flex min-w-0 items-center gap-2">
                     <FileText className="h-5 w-5 shrink-0 text-accent" />
                     <span className="truncate text-sm text-foreground/80">{cvFile.name}</span>
@@ -220,16 +260,19 @@ export function JobApplicationForm() {
                 onChange={handleFileChange}
                 className="hidden"
               />
-              {fileError && <p className="mt-2 text-sm font-medium text-destructive">{fileError}</p>}
+              {fileError && <p className="mt-1.5 text-xs md:text-sm font-medium text-destructive">{fileError}</p>}
             </div>
           </div>
 
-          <div className="text-center pt-2">
+          <div className={cn("text-center", compact ? "pt-1" : "pt-2")}>
             <Button
               type="submit"
-              size="lg"
+              size={compact ? "default" : "lg"}
               disabled={isSubmitting}
-              className="w-full max-w-sm rounded-md bg-accent text-primary-foreground hover:bg-accent/90 text-lg h-12"
+              className={cn(
+                "w-full max-w-sm rounded-md bg-accent text-primary-foreground hover:bg-accent/90",
+                compact ? "h-10 text-base" : "h-12 text-lg",
+              )}
             >
               {isSubmitting ? "Submitting..." : "Submit Application"}
             </Button>
