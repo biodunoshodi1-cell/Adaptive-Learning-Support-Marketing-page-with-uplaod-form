@@ -31,17 +31,18 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <section className="relative flex min-h-[88vh] w-full items-center overflow-hidden bg-[#1b2a6c] py-24 text-white">
+      <section className="relative flex min-h-[88vh] w-full items-center overflow-hidden bg-[#fbf3e4] py-24 text-[#1b2a6c]">
         <div className="absolute inset-0 z-0">
           <HeroSlideshow />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1b2a6c]/90 via-[#1b2a6c]/60 to-[#2bb3a3]/15" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#fbf3e4]/95 via-[#fbf3e4]/80 to-[#fbf3e4]/25" />
+          {/* soft fade into the white page below */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
           {/* Faint static logo watermark: sits above the photos, below the text, never moves */}
           <img
             src="/als-logo.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute right-[4%] top-1/2 h-[62%] max-h-[520px] w-auto -translate-y-1/2 select-none object-contain opacity-[0.26] md:right-[6%]"
-            style={{ filter: "brightness(0) invert(1)" }}
+            className="pointer-events-none absolute right-[4%] top-1/2 h-[62%] max-h-[520px] w-auto -translate-y-1/2 select-none object-contain opacity-[0.30] md:right-[6%]"
           />
         </div>
                 <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
@@ -50,7 +51,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="mb-6 inline-block rounded-full border border-white/50 px-5 py-1.5 text-xs font-normal uppercase tracking-[0.14em] text-white md:text-sm"
+              className="mb-6 inline-block rounded-full border border-[#1b2a6c]/40 px-5 py-1.5 text-xs font-normal uppercase tracking-[0.14em] text-[#1b2a6c] md:text-sm"
             >
               Specialist SEN Support
             </motion.span>
@@ -58,16 +59,24 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="mb-5 text-5xl font-normal leading-[1.05] text-white md:text-6xl lg:text-7xl"
+              className="mb-4 text-5xl font-normal leading-[1.05] text-[#1b2a6c] md:text-6xl lg:text-7xl"
               style={{ fontFamily: "'Fraunces', Georgia, serif" }}
             >
-              Learning that <em className="italic text-[#ffd9a0]">adapts</em> to every child
+              Learning that <em className="italic text-[#e8743f]">adapts</em> to every child
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.18 }}
+              className="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-[#c9531c] md:text-base"
+            >
+              Specialized Special Educational Needs Support for Schools and Families
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25 }}
-              className="mb-8 text-lg font-light leading-relaxed text-white/95"
+              className="mb-8 text-lg font-normal leading-relaxed text-[#1b2a6c]/90"
             >
               Summer tutoring, ABA home therapy, and workshops for parents and LSAs — patient, personalised support that helps every learner thrive.
             </motion.p>
@@ -85,7 +94,7 @@ export default function Home() {
               </a>
               <a
                 href="/contact#contact-form"
-                className="inline-block rounded-full border border-white px-8 py-4 text-base font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-[#1b2a6c]"
+                className="inline-block rounded-full border border-[#1b2a6c] px-8 py-4 text-base font-medium text-[#1b2a6c] transition-all hover:-translate-y-0.5 hover:bg-[#1b2a6c] hover:text-white"
               >
                 Book a call
               </a>

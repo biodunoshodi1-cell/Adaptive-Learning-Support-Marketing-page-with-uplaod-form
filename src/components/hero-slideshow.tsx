@@ -8,7 +8,6 @@ const SLIDES = [
   "/hero-slides/slide-4.jpg",
   "/hero-slides/slide-5.jpg",
   "/hero-slides/slide-6.jpg",
-  "/hero-slides/slide-7.jpg",
 ];
 
 // Slow "Ken Burns" drift - each slide moves in a different direction.
