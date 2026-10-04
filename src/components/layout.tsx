@@ -49,22 +49,24 @@ export function Navbar() {
 
   const isServiceActive = services.some((s) => s.href === location);
 
+  const isHome = location === "/" || location === "" || location === "/index.html";
+
+  const linkClass = (active: boolean) =>
+    `text-sm font-medium transition-colors hover:text-accent ${active ? "text-accent" : "text-foreground/80"}`;
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
-      <div className="hidden md:flex items-center justify-end border-b border-accent/30 bg-[#97BCC8]/10 px-8 py-1.5">
-        <a href={whatsappHref} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-medium text-foreground/75 hover:text-[#97BCC8] transition-colors">
-          <SiWhatsapp size={14} className="text-[#97BCC8]" />
-          +971 544 078 461
-        </a>
-      </div>
-
-      <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-8">
-        <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80" onClick={() => { setMenuOpen(false); setDropdownOpen(false); }}>
-          <img src="/als-logo.png" alt="Adaptive Learning Support" className="h-28 w-auto object-contain drop-shadow-sm" />
-        </Link>
-
+      {/* Top line: page links + WhatsApp */}
+      <div className="flex items-center gap-3 border-b border-accent/30 bg-[#97BCC8]/10 px-4 py-1.5 md:gap-8 md:px-8">
+        <div className="mr-auto">
+          {!isHome && (
+            <Link href="/" onClick={() => { setMenuOpen(false); setDropdownOpen(false); }} className="block transition-opacity hover:opacity-80">
+              <img src="/als-logo.png" alt="Adaptive Learning Support" className="h-10 w-auto object-contain" />
+            </Link>
+          )}
+        </div>
         <div className="hidden items-center gap-8 md:flex">
-          <Link href="/" className={`text-sm font-medium transition-colors hover:text-accent ${location === "/" ? "text-accent" : "text-foreground/80"}`}>Home</Link>
+          <Link href="/" className={linkClass(location === "/")}>Home</Link>
           <div ref={dropdownRef} className="relative">
             <button onClick={() => setDropdownOpen((p) => !p)} className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent ${isServiceActive ? "text-accent" : "text-foreground/80"}`}>
               Our Services
@@ -88,17 +90,21 @@ export function Navbar() {
               </div>
             )}
           </div>
-          <Link href={contactFormHref} className={`text-sm font-medium transition-colors hover:text-accent ${location === "/contact" ? "text-accent" : "text-foreground/80"}`}>Contact</Link>
+          <Link href={contactFormHref} className={linkClass(location === "/contact")}>Contact</Link>
         </div>
 
-        <div className="flex items-center gap-3 md:hidden">
-          <a href={whatsappHref} target="_blank" rel="noreferrer" className="flex items-center justify-center rounded-full bg-[#97BCC8]/15 p-2 text-[#97BCC8] hover:bg-[#97BCC8]/30 transition-colors" aria-label="Chat on WhatsApp">
-            <SiWhatsapp size={18} />
-          </a>
-          <button className="flex items-center justify-center rounded-lg p-2 text-foreground/70 hover:bg-accent/10 hover:text-accent transition-colors" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
+        <a href={whatsappHref} target="_blank" rel="noreferrer" className="hidden items-center gap-2 border-l border-foreground/15 pl-8 text-sm font-medium text-foreground/75 transition-colors hover:text-[#97BCC8] md:flex">
+          <SiWhatsapp size={14} className="text-[#97BCC8]" />
+          +971 544 078 461
+        </a>
+
+        {/* Mobile: WhatsApp + menu button */}
+        <a href={whatsappHref} target="_blank" rel="noreferrer" className="flex items-center justify-center rounded-full bg-[#97BCC8]/15 p-1.5 text-[#97BCC8] transition-colors hover:bg-[#97BCC8]/30 md:hidden" aria-label="Chat on WhatsApp">
+          <SiWhatsapp size={18} />
+        </a>
+        <button className="flex items-center justify-center rounded-lg p-1.5 text-foreground/70 transition-colors hover:bg-accent/10 hover:text-accent md:hidden" onClick={() => setMenuOpen((prev) => !prev)} aria-label={menuOpen ? "Close menu" : "Open menu"}>
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
       {menuOpen && (

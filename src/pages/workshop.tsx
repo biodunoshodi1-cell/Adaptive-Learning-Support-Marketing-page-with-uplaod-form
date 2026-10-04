@@ -437,7 +437,7 @@ export default function Workshop() {
                         <FormItem>
                           <FormLabel className="font-heading">Phone (Optional)</FormLabel>
                           <FormControl>
-                            <Input type="tel" placeholder="+44 7700 900077" {...field} className="rounded-full bg-[#97BCC8]/5 border-[#97BCC8]/30" data-testid="input-phone" />
+                            <Input type="tel" placeholder="+971 50 123 4567" {...field} className="rounded-full bg-[#97BCC8]/5 border-[#97BCC8]/30" data-testid="input-phone" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

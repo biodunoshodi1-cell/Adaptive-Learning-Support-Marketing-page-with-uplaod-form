@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ContactForm } from "@/components/contact-form";
+import { HeroSlideshow } from "@/components/hero-slideshow";
 
 export default function Home() {
   const fadeInUp = {
@@ -30,23 +31,66 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <section className="relative flex min-h-[72vh] w-full items-center justify-center overflow-hidden bg-[#97BCC8]/10 py-24">
+      <section className="relative flex min-h-[88vh] w-full items-center overflow-hidden bg-[#1b2a6c] py-24 text-white">
         <div className="absolute inset-0 z-0">
-          <img src="/hero.png" alt="Children learning in a classroom" className="h-full w-full object-cover object-center" />
-          <div className="absolute inset-0 bg-white/45" />
+          <HeroSlideshow />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1b2a6c]/90 via-[#1b2a6c]/60 to-[#2bb3a3]/15" />
+          {/* Faint static logo watermark: sits above the photos, below the text, never moves */}
+          <img
+            src="/als-logo.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[4%] top-1/2 h-[62%] max-h-[520px] w-auto -translate-y-1/2 select-none object-contain opacity-[0.26] md:right-[6%]"
+            style={{ filter: "brightness(0) invert(1)" }}
+          />
         </div>
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="font-heading text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-7xl"
-          >
-            Working to ensure every SEN child is known, valued and understood
-          </motion.h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Specialist support for families and schools, delivered with warmth, clarity, and care.
-          </p>
+                <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+          <div className="max-w-2xl">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="mb-6 inline-block rounded-full border border-white/50 px-5 py-1.5 text-xs font-normal uppercase tracking-[0.14em] text-white md:text-sm"
+            >
+              Specialist SEN Support
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="mb-5 text-5xl font-normal leading-[1.05] text-white md:text-6xl lg:text-7xl"
+              style={{ fontFamily: "'Fraunces', Georgia, serif" }}
+            >
+              Learning that <em className="italic text-[#ffd9a0]">adapts</em> to every child
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+              className="mb-8 text-lg font-light leading-relaxed text-white/95"
+            >
+              Summer tutoring, ABA home therapy, and workshops for parents and LSAs — patient, personalised support that helps every learner thrive.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-wrap gap-3"
+            >
+              <a
+                href="#services"
+                className="inline-block rounded-full bg-[#ff8a5b] px-8 py-4 text-base font-medium text-white transition-transform hover:-translate-y-0.5"
+              >
+                Our services
+              </a>
+              <a
+                href="/contact#contact-form"
+                className="inline-block rounded-full border border-white px-8 py-4 text-base font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-[#1b2a6c]"
+              >
+                Book a call
+              </a>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -71,7 +115,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#97BCC8]/5 py-20">
+      <section id="services" className="scroll-mt-24 bg-[#97BCC8]/5 py-20">
         <div className="container mx-auto px-4 md:px-8">
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <h2 className="font-display text-3xl font-bold text-foreground/90 md:text-4xl">Our Services</h2>

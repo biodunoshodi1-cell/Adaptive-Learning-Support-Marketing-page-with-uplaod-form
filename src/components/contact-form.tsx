@@ -89,7 +89,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel className="font-heading text-sm">Phone (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="+44 7700 900077" type="tel" {...field} className="rounded-md bg-background" />
+                    <Input placeholder="+971 50 123 4567" type="tel" {...field} className="rounded-md bg-background" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
