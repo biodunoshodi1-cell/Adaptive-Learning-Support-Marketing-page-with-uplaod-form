@@ -31,12 +31,12 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <section className="relative flex min-h-[88vh] w-full items-center overflow-hidden bg-[#fbf3e4] py-24 text-[#1b2a6c]">
+      <section className="relative flex min-h-[88vh] w-full items-center overflow-hidden bg-white py-24 text-[#1b2a6c]">
         <div className="absolute inset-0 z-0">
           <HeroSlideshow />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#fbf3e4]/95 via-[#fbf3e4]/80 to-[#fbf3e4]/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#fbf6ec]/80 via-[#fbf6ec]/45 to-transparent" />
           {/* soft fade into the white page below */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white via-white/70 to-transparent" />
           {/* Faint static logo watermark: sits above the photos, below the text, never moves */}
           <img
             src="/als-logo.png"
