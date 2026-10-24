@@ -14,7 +14,6 @@ faqs.html, urgent-help.html, book.html, availability.html, 404.html.
 
 NOTES
 - Edit text, session lengths and consultant details in site.js (top of the file). Style is in site.css.
-- netlify.toml tells Netlify there is nothing to build, so leave the build command empty in the Netlify settings.
 - Prices are hidden on the site. The free intro consultation shows as Free.
 - Images are in the assets folder.
 - CV uploads arrive through Netlify Forms as a download link in the notification email.

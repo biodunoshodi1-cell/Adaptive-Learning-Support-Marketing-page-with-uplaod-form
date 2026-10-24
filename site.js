@@ -1,6 +1,5 @@
 const IMG={h4:'assets/hero-4.jpg',h6:'assets/hero-6.jpg',a1:'assets/a1.jpg',a2:'assets/a2.jpg',h5:'assets/h5.jpg',vsrc:'assets/intro.mp4',vposter:'assets/video-poster.jpg',logo:'assets/als-logo.png',s1:'assets/service-1.jpg',s2:'assets/service-2.jpg',s3:'assets/service-3.jpg',h1:'assets/hero-1.jpg',h3:'assets/hero-3.jpg',h2:'assets/hero-2.jpg'};
 const WA='971544078461',EM='info@adaptivelearningsupport.com',PH='+971 544 078 461';
-const ST=[{"n": "Mr. Abiodun Oshodi", "r": "Behaviour Therapist", "img": "assets/abiodun.jpg", "c": ["QABA board certified ABA therapist", "Registered Behavior Technician (RBT)", "Inclusion specialist", "Alternative Pathway teacher", "Safety professional", "Artificial intelligence specialist"], "s": "Helps children, teens, and families build learning and behaviour skills in small, practical steps.", "b": ["I’m Abiodun, a behaviour therapist who believes every learner can make progress when support fits them. I’m a QABA board certified ABA therapist and a Registered Behavior Technician. I’m also an inclusion specialist and an Alternative Pathway teacher, so I understand learning from both the therapy room and the classroom. I’m also a safety professional and an artificial intelligence specialist.", "I’ve also built learning websites and applications for children with special educational needs and disabilities (SEND), designed to support them and accommodate the way they learn.", "I work with children, teens, and their families, as well as the teachers who support them. Together we look at what’s making learning or daily routines hard, then build small, clear steps that lead to real change.", "If you’re nervous about reaching out, that’s completely normal. Your first session is a relaxed conversation. You tell me what’s going on and what you hope for, I listen and ask a few questions, and we agree on a first step. There’s no pressure and no judgment."]}, {"n": "Ms. Fadekemi Adebanjo", "r": "QABA Board Certified Therapist", "img": "assets/fadekemi.jpg", "c": ["QABA board certified therapist", "ABA certified", "SEND certified", "ASDAN trained / Alternate Pathway consultant", "Life skills specialist"], "s": "Builds everyday life skills and independence with learners, families, and schools.", "b": ["I’m Fadekemi, a QABA board certified therapist with ABA and SEND certification. I’m also ASDAN trained, an Alternate Pathway consultant, and a life skills specialist.", "I help learners build the everyday skills that lead to more independence at school, at home, and in the community. I work with children, teens, and families, and with schools that want every learner to feel included. Together we set practical goals and practise them in small steps.", "If you’re unsure about asking for help, that’s okay. Your first session is a friendly conversation about what’s working, what’s hard, and what you hope for. There’s no pressure to commit."]}];
 const SV=[
 {k:'intro',ty:'c',n:'Free intro consultation',p:'Free',d:20,g:'con',t:'Share your goals and plan your next steps.',w:'Parents, learners, and schools exploring support.',h:['Share your goals and concerns.','Talk through what works and what is hard.','Agree on a clear first step.']},
 {k:'literacy-support',ty:'c',n:'Literacy support',p:'',d:60,g:'con',t:'Reading, spelling, writing, and comprehension support.',w:'Learners who find reading, spelling, or writing hard, including dyslexia and language-based needs.',h:['Review current reading and writing skills.','Practise one targeted skill using multi-sensory methods.','Leave with a short home practice plan.']},
@@ -11,8 +10,6 @@ const SV=[
 {k:'aba-therapy',ty:'t',n:'ABA therapy session',p:'',d:60,g:'the',img:'a2',t:'Applied Behaviour Analysis therapy, delivered in the comfort of your own home.'},
 {k:'speech-therapy',ty:'t',n:'Speech therapy session',p:'',d:60,g:'the',img:'h3',t:'Play-based therapy for speech, language, and communication.'},
 {k:'occupational-therapy',ty:'t',n:'Occupational therapy session',p:'',d:60,g:'the',img:'h5',t:'Building the skills for play, learning, and everyday independence.'}];
-ST[0].o=[0,1,2,3,5,6];ST[0].sp=['Behaviour support (ABA)','Inclusion in mainstream classrooms','Learning technology for children with SEND','Safe, structured learning spaces'];
-ST[1].o=[0,1,2,3,4,5,6];ST[1].sp=['ABA and SEND support','ASDAN life skills programmes','Alternate Pathway planning','Independence and daily living skills'];
 const lenp=s=>s.p==='Free'?'Free · '+s.d+' min':s.d+' min';
 const G={con:'Consultations',the:'Therapy sessions',pro:'Programmes'};
 const PG=[
@@ -139,11 +136,10 @@ async function doForm(f){
 const URG=`<aside class="urg" aria-labelledby="urg-h"><h2 id="urg-h">Need urgent help?</h2><p>We can’t always reply right away. If you or someone you know is at immediate risk, call 999 or 998 now, or go to the nearest hospital emergency department.</p><div class="nums"><a href="tel:999"><b>999</b><span>Police</span></a><a href="tel:998"><b>998</b><span>Ambulance</span></a><a href="tel:997"><b>997</b><span>Fire and civil defence</span></a></div><h3>Support lines in the UAE</h3><ul class="lines"><li>Child Protection Centre, Ministry of Interior <a href="tel:116111">116111</a></li><li>Child Protection Unit, Ministry of Education (bullying) <a href="tel:80085">80085</a></li><li>Community Development Authority, Dubai <a href="tel:800988">800 988</a></li><li>Child Protection Centre, Sharjah <a href="tel:800700">800 700</a></li><li>Dubai Health Authority health line <a href="tel:800342">800 342</a></li><li>Abu Dhabi Estijaba health line <a href="tel:8001717">800 1717</a></li></ul></aside>`;
 
 /* Pages */
-function teamCards(){return `<div class="grid g2">${ST.map((t,i)=>`<div class="card"><div class="who"><img class="av" src="${t.img}" alt="${t.n}"><div><h3 style="margin:0">${t.n}</h3><span class="r">${t.r}</span></div></div><p>${t.s}</p><a class="more" href="#/staff/${i+1}" style="margin-right:1.2rem">Read more</a><a class="more" href="#/book" data-st="${i}">Book</a></div>`).join('')}</div>`}
 const WHY=['Children are understood first: we listen and observe before we plan.','Every child gets an individual plan, never a generic programme.','Sessions are led by trained, certified specialists.','Families receive clear updates on progress and next steps.','Your first consultation is free, with no commitment.'];
 const HOW=[['Free consultation','A calm 20-minute conversation about your child and your goals.','Free · No commitment'],['Assessment and plan','We learn how your child learns and agree clear, simple goals.','Personalised'],['Sessions begin','Regular sessions with a specialist matched to your child.','Ongoing'],['Review and progress','We review progress with you and adjust the plan.','Transparent']];
 const whyhow=st=>{const S=st||HOW.map(x=>[x[0],x[1]]);return sec('',`<div class="grid g2 wh"><div><span class="eyebrow">Why us</span><h2>Why families choose <em>us</em></h2><ul class="checks left">${WHY.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><span class="eyebrow">How it works</span><h2>Four simple <em>steps</em></h2><ol class="mini">${S.map((x,i)=>`<li><b>${i+1}</b><div><h3>${x[0]}</h3><p>${x[1]}</p></div></li>`).join('')}</ol></div></div>`)};
-const connect=(key='quick',hid={},def={})=>sec('alt',`<div class="split"><div><span class="eyebrow">Let’s connect</span><h2>Every learner has the potential to <em>grow</em></h2><p>Start with a calm conversation. Leave with a clear plan. No pressure, just clarity and a next step you can trust.</p><div class="ctas">${btn('#/book','Book a free consultation')}${btn('#/contact','Contact us','ghost')}</div><p class="note">Or email <a href="mailto:${EM}">${EM}</a>. We reply within 48 hours.</p></div><div>${formHTML(key,hid,[],def)}</div></div>`,'connect');
+const connect=(key='quick',hid={},def={})=>sec('alt',`<div class="split"><div><span class="eyebrow">Let’s connect</span><h2>Every learner has the potential to <em>grow</em></h2><p>Start with a calm conversation. Leave with a clear plan. No pressure, just clarity and a next step you can trust.</p><div class="ctas">${btn('#/book','Book a free consultation')}${btn('#/contact','Contact us','ghost')}</div><p class="note">Or email <a href="mailto:${EM}">${EM}</a>, or <a data-wa href="https://wa.me/${WA}" target="_blank" rel="noopener">chat with us on WhatsApp</a>. We reply within 48 hours.</p></div><div>${formHTML(key,hid,[],def)}</div></div>`,'connect');
 const strip=(t,p)=>sec('',`<div class="strip"><div><h2>${t}</h2><p>${p}</p></div><div class="ctas">${btn('#/book','Book a free consultation')}${btn('#/contact','Contact us','light')}</div></div>`);
 const vid=()=>sec('alt',`<div class="split"><div><span class="eyebrow">Watch</span><h2>See how we <em>work</em></h2><p>Short videos on learning support, behaviour, and simple strategies for families and schools.</p><div class="ctas"><a class="btn navy" href="${YT}" target="_blank" rel="noopener">Visit our YouTube channel</a></div></div><div><div class="vid" data-vid><img src="${IMG.h3}" alt="" loading="lazy"><button class="play" aria-label="Play video">${ic('yt')}</button></div><p class="note">Video not playing? <a href="${YT}" target="_blank" rel="noopener">Watch on YouTube</a></p></div></div>`);
 const DL={con:'Choose a consultation',the:'Choose a therapy session',pro:'Choose a programme'};
@@ -154,13 +150,13 @@ function home(){return `
 <section class="hero"><div class="wrap split"><div>${eb('Specialist SEN support')}<h1>Learning that <em>adapts</em> to every child</h1>
 <p class="tl">Support that strengthens every learner.</p>
 <p class="lead">Consultations, ABA, speech, and occupational therapy, plus tutoring and workshops. No diagnosis needed to start.</p>
-<div class="ctas">${btn('#/book','Book a free consultation')}${btn('#/services','Our services','ghost')}<a class="btn navy" href="https://wa.me/${WA}" target="_blank" rel="noopener">Get in touch</a></div></div>
+<div class="ctas">${btn('#/book','Book a free consultation')}${btn('#/services','Our services','ghost')}<a class="btn navy" data-wa href="https://wa.me/${WA}" target="_blank" rel="noopener">Get in touch</a></div></div>
 <div class="photo slides" id="slides">${[IMG.h1,IMG.h2,IMG.h3,IMG.h4,IMG.h5,IMG.h6].map((u,i)=>`<img src="${u}" alt="${i?'':'Children learning with their teachers'}" class="${i?'':'on'}" width="960" height="640">`).join('')}</div></div></section>
 ${sec('',`<div class="grid g2">${['con','the'].map(g=>grpCard(g,1)).join('')}</div>`)}
 ${sec('alt',`<div class="split"><div><h2>Why families choose <em>us</em></h2><ul class="checks left">${WHY.map(x=>`<li>${x}</li>`).join('')}</ul><div class="ctas">${btn('#/book','Book a free consultation')}</div></div>${vbox()}</div>`)}`}
-function services(){return pheadI('Our services','Support for <em>learning and behaviour</em>','Consultations for advice, therapy sessions for hands-on support, and programmes for families and schools.','h1')+sec('',`<div class="grid g3">${['con','the','pro'].map(grpCard).join('')}</div>`)+strip('Not sure where to start?','Book a free 20-minute consultation and we’ll point you to the right support.')}
+function services(){return pheadI('Our services','Support for <em>learning and behaviour</em>','Consultations for advice, therapy sessions for hands-on support, and programmes for families and schools.','h1')+sec('',`<div class="grid g3">${['con','the','pro'].map(grpCard).join('')}</div>`,'svcgrid')+strip('Not sure where to start?','Book a free 20-minute consultation and we’ll point you to the right support.')}
 function category(g){if(!G[g])return notFound();const it=SV.concat(PG).filter(x=>x.g===g);
- return pheadI('Services',G[g],CD[g],CI[g])+sec('',`<div class="grid g3">${it.map(svcCard).join('')}</div><p style="margin-top:2rem"><a href="#/services">← All services</a></p>`)+strip('Not sure which to choose?','Book a free 20-minute consultation and we’ll guide you.')}
+ return pheadI('Services',G[g],CD[g],CI[g])+sec('',`<div class="grid g3">${it.map(svcCard).join('')}</div><p style="margin-top:2rem"><a href="#/services">← All services</a></p>`,'svcgrid')+strip('Not sure which to choose?','Book a free 20-minute consultation and we’ll guide you.')}
 function urgent(){return phead('Urgent help','Support when you <em>need it now</em>')+sec('',URG)}
 const mini=a=>`<ol class="mini">${a.map((x,i)=>`<li><b>${i+1}</b><div><p>${x}</p></div></li>`).join('')}</ol>`;
 function svcPage(e,d,idx){
@@ -181,39 +177,35 @@ function learn(n){const g=GU[(+n||0)-1];
 function about(){return phead('About us','Every child <em>known, valued and understood</em>','A team of highly qualified, certified, and experienced professionals, helping learners build skills, confidence, and independence.')+
 sec('',`<div class="txt-l"><p>Every member of our team is a qualified, certified, and competent professional in their own field. We bring together specialists in behaviour, communication, everyday living, literacy, and inclusion, so each child is supported by the right expert for each need.</p></div>`+cards([['Behaviour and ABA','Board certified ABA therapists and registered behaviour technicians delivering evidence-based, compassionate support.'],['Speech and language','Qualified speech and language therapists helping children understand, express themselves, and communicate with confidence.'],['Occupational therapy','Qualified occupational therapists building fine motor, sensory, and everyday living skills.'],['Literacy and learning','Experienced teachers and learning specialists skilled in reading, writing, spelling, and study strategies.'],['SEND and inclusion','SEND-certified specialists who help families and schools plan the right support and accommodations.'],['Life skills and independence','Specialists in life skills programmes who build confidence and independence for the future.']]).replace('grid g3','grid g3 three'))+
 sec('alt',`<div class="split"><div><h2>Why you can trust our team</h2><ul class="checks left"><li>Qualified and certified for the area they work in.</li><li>Carefully matched to your child’s needs and goals.</li><li>Trained in evidence-based, child-centred practice.</li><li>Working closely with families, teachers, and LSAs.</li></ul></div><div><h2>Our approach</h2><p>Every plan starts with the learner’s strengths and goals, with clear, small steps that lead to real change. Literacy, learning, and behaviour support come together in one joined-up team.</p></div></div>`)+strip('Ready to talk?','Book a free 20-minute consultation, or get in touch.')}
-function staff(n){const i=Math.min(Math.max((+n||1)-1,0),ST.length-1),t=ST[i];
- return `<section class="sec"><div class="wrap"><p><a href="#/book">← Back to booking</a></p><div class="who"><img class="av big" src="${t.img}" alt="${t.n}"><div><h1 style="font-size:clamp(1.8rem,4vw,2.6rem)">${t.n}</h1><span class="r">${t.r}</span></div></div><ul class="creds">${t.c.map(x=>`<li>${x}</li>`).join('')}</ul><div class="story">${t.b.map(x=>`<p>${x}</p>`).join('')}</div><h2 style="font-size:1.4rem;margin-top:1.5rem">Focus areas</h2><ul class="creds">${t.sp.map(x=>`<li>${x}</li>`).join('')}</ul><h2 style="font-size:1.4rem">Services offered</h2><div class="grid g3" style="margin-bottom:1.5rem">${t.o.map(k=>`<div class="card"><h3>${SV[k].n}</h3><p>${lenp(SV[k])}</p><a class="more" href="#/book" data-st="${i}" data-s="${k}">Book this</a></div>`).join('')}</div>${btn('#/book','Book with '+t.n,'','data-st="'+i+'"')}</div></section>`}
-function careers(){return phead('Careers','Join <em>our team</em>','We welcome qualified, caring professionals across all of our services. If you are passionate about helping children with special educational needs thrive, we would love to hear from you.')+
-sec('',head('Roles we recruit for','Whatever your specialism, there is a place for you on our team.')+cards([['ABA and behaviour','ABA therapists and registered behaviour technicians delivering therapy and behaviour support.'],['Speech and language','Speech and language therapists supporting communication, speech, and understanding.'],['Occupational therapy','Occupational therapists building fine motor, sensory, and everyday living skills.'],['Literacy and learning','Literacy specialists, teachers, and tutors, including our summer holiday tutoring.'],['SEND and inclusion','SEND and inclusion specialists, and facilitators for our parent and LSA workshops.'],['Learning support assistants','LSAs working with families and schools to give children focused, one-to-one support.']]).replace('grid g3','grid g3 three'))+
-sec('alt',`<div class="split cs"><div><h2>What we expect</h2><ul class="checks left"><li>Relevant qualifications and certifications for the role you are applying for.</li><li>Proven experience working with children with special educational needs.</li><li>Strong communication with families, teachers, and other professionals.</li><li>A warm, patient, child-centred approach and a commitment to inclusion.</li><li>Reliability, professionalism, and satisfactory background checks.</li></ul><h3 class="sub">How to apply</h3>${mini(['Fill in the form and attach your CV.','We review your application and get in touch.','Interview and credential checks, then we match you with the right families and schools.'])}</div><div id="enq">${formHTML('job')}</div></div>`)}
-function contact(){return phead('Contact us','Let’s <em>talk</em>','Parent, school, or professional: we’re here to answer your questions.')+sec('',`<div class="split cs"><div><div class="grid g2 cc2"><div class="card"><h3>WhatsApp</h3><p><a href="https://wa.me/${WA}" target="_blank" rel="noopener">${PH}</a></p></div><div class="card"><h3>Email</h3><p><a href="mailto:${EM}">${EM}</a></p></div><div class="card"><h3>Website</h3><p><a href="https://adaptivelearningsupport.com" target="_blank" rel="noopener">adaptivelearningsupport.com</a></p></div><div class="card"><h3>Follow us</h3>${soc('dark')}</div></div><p class="note" style="margin-top:1rem">Need urgent help? <a href="#/urgent-help">See urgent help lines</a>.</p></div>${formHTML('contact')}</div>`)}
+function careers(){return sec('',`<div class="split cs"><div><span class="eyebrow">Careers</span><h1 style="font-size:clamp(1.9rem,4vw,2.7rem)">Join <em>our team</em></h1><p style="margin-top:.6rem">We welcome qualified, caring professionals across all of our services. If you are passionate about helping children with special educational needs thrive, we would love to hear from you.</p><h2 style="font-size:1.5rem;margin-top:1.4rem">What we expect</h2><ul class="checks left"><li>Relevant qualifications and certifications for the role you are applying for.</li><li>Proven experience working with children with special educational needs.</li><li>Strong communication with families, teachers, and other professionals.</li><li>A warm, patient, child-centred approach and a commitment to inclusion.</li><li>Reliability, professionalism, and satisfactory background checks.</li></ul><h3 class="sub">How to apply</h3>${mini(['Fill in the form and attach your CV.','We review your application and get in touch.','Interview and credential checks, then we match you with the right families and schools.'])}</div><div id="enq"><h2 style="font-size:1.5rem">Apply now</h2><p class="note" style="margin:0 0 1rem">Fill in the form and attach your CV.</p>${formHTML('job')}</div></div>`)}
+function contact(){return phead('Contact us','Let’s <em>talk</em>','Parent, school, or professional: we’re here to answer your questions.')+sec('',`<div class="split cs"><div><div class="grid g2 cc2"><div class="card"><h3>WhatsApp</h3><p><a data-wa href="https://wa.me/${WA}" target="_blank" rel="noopener">${PH}</a></p></div><div class="card"><h3>Email</h3><p><a href="mailto:${EM}">${EM}</a></p></div><div class="card"><h3>Website</h3><p><a href="https://adaptivelearningsupport.com" target="_blank" rel="noopener">adaptivelearningsupport.com</a></p></div><div class="card"><h3>Follow us</h3>${soc('dark')}</div></div><p class="note" style="margin-top:1rem">Need urgent help? <a href="#/urgent-help">See urgent help lines</a>.</p></div><div id="enq">${formHTML('contact')}</div></div>`)}
 function faqs(){return phead('FAQs','Frequently asked <em>questions</em>')+sec('',`<div style="max-width:760px;margin:0 auto">${FAQ.map(q=>`<details><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('')}<p style="text-align:center;margin-top:2rem">Still have a question? ${btn('#/contact','Contact us','sm')}</p></div>`)}
 
 /* Booking */
-let st=0,sel=-1,pick=null,mo=new Date(),cal=0;mo=new Date(mo.getFullYear(),mo.getMonth(),1);
+let sel=-1,pickDay=null,pick=null,mo=new Date();mo=new Date(mo.getFullYear(),mo.getMonth(),1);
 const TM=['9:00 AM','10:30 AM','1:00 PM','2:30 PM','4:00 PM'];
-const slots=d=>{const w=d.getDay();if(w===0||w===6)return[];const s=d.getDate()+d.getMonth()+st*2;return TM.filter((_,i)=>(i+s)%3!==0)};
+const slots=d=>{const w=d.getDay();if(w===0||w===6)return[];const s=d.getDate()+d.getMonth();return TM.filter((_,i)=>(i+s)%3!==0)};
 const fmt=d=>d.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
-const picker=()=>ST.map((t,i)=>`<button class="pick" data-st="${i}" aria-pressed="${i===st}"><img class="av sm" src="${t.img}" alt=""><span><b>${t.n}</b>${t.r}</span></button>`).join('');
+const dkey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const fromKey=k=>{const a=k.split('-');return new Date(+a[0],+a[1]-1,+a[2])};
+function calHTML(){
+ const days=new Date(mo.getFullYear(),mo.getMonth()+1,0).getDate(),today=new Date();today.setHours(0,0,0,0);
+ const prevOk=mo>new Date(today.getFullYear(),today.getMonth(),1);
+ let c=['Su','Mo','Tu','We','Th','Fr','Sa'].map(x=>`<div class="h">${x}</div>`).join('');for(let i=0;i<mo.getDay();i++)c+='<div></div>';
+ for(let i=1;i<=days;i++){const d=new Date(mo.getFullYear(),mo.getMonth(),i),ok=d>today&&slots(d).length,k=dkey(d);
+  c+=ok?`<button class="dayb" data-day="${k}" aria-pressed="${pickDay===k}" aria-label="${fmt(d)}">${i}</button>`:`<div class="off">${i}</div>`}
+ return `<div class="mh"><button class="btn sm ghost" data-mo="-1" aria-label="Previous month"${prevOk?'':' disabled'}>&lt;</button><b>${mo.toLocaleDateString('en-US',{month:'long',year:'numeric'})}</b><button class="btn sm ghost" data-mo="1" aria-label="Next month">&gt;</button></div><div class="cal">${c}</div>`}
 function book(){
- const S=sel>=0?SV[sel]:null,by=S?ST.map((t,i)=>i).filter(i=>ST[i].o.includes(sel)):[];
- if(by.length&&!by.includes(st))st=by[0];
+ const S=sel>=0?SV[sel]:null;
  const grp=ty=>SV.map((v,i)=>v.ty===ty?`<button class="pick" data-i="${i}" aria-pressed="${i===sel}"><span><b>${v.n}</b>${lenp(v)}</span></button>`:'').join('');
  let r;
- if(!S)r='<div class="empty"><p><b>Choose a service</b><br>Pick a consultation or therapy session to continue.</p></div>';
- else{let h=`<h2 style="font-size:1.5rem">${S.n}</h2><p style="color:var(--muted)">${lenp(S)}</p><p>${S.t}</p>`;
-  if(!by.length)h+=`<p>We’ll match you with a qualified therapist from our team and confirm a time with you.</p>${formHTML('booking',{session:S.n,consultant:'To be matched by our team',date:'',time:''})}`;
-  else if(pick)h+=`<h3>Confirm your request</h3><p>${pick.d} at ${pick.t} (UAE time) with ${ST[st].n}</p>${formHTML('booking',{session:S.n,consultant:ST[st].n,date:pick.d,time:pick.t},['preferred'])}<p><button class="btn sm ghost" data-bk>← Choose another time</button></p>`;
-  else{h+=`<h3>Choose a consultant</h3>${by.map(i=>`<button class="pick" data-st="${i}" aria-pressed="${i===st}"><img class="av sm" src="${ST[i].img}" alt=""><span><b>${ST[i].n}</b>${ST[i].r}</span></button>`).join('')}<p><a href="#/staff/${st+1}">Read more about ${ST[st].n}</a></p><h3>Suggested times (UAE time)</h3>`;
-   let n=0,d=new Date();while(n<5){d=new Date(d.getTime()+864e5);const sl=slots(d);if(!sl.length)continue;n++;h+=`<div class="day"><b>${fmt(d)}</b>${sl.map(t=>`<button class="t" data-d="${fmt(d)}" data-t="${t}">${t}</button>`).join('')}</div>`}
-   h+='<p class="note">Choose a preferred time. We confirm your appointment by email or WhatsApp within 48 hours.</p>'}
+ if(!S)r='<div class="empty"><p><b>Choose a service</b><br>Pick a consultation or therapy session to see the calendar.</p></div>';
+ else{let h=`<h2 style="font-size:1.5rem">${S.n}</h2><p style="color:var(--muted)">${lenp(S)}. ${S.t}</p><h3>1. Pick a date</h3>${calHTML()}`;
+  if(pickDay){const d=fromKey(pickDay),sl=slots(d);h+=`<h3 style="margin-top:1.4rem">2. Pick a time on ${fmt(d)} (UAE time)</h3><div class="times">${sl.map(t=>`<button class="t" data-t="${t}" aria-pressed="${!!(pick&&pick.t===t)}">${t}</button>`).join('')}</div>`}
+  if(pick)h+=`<h3 style="margin-top:1.4rem">3. Your details</h3>${formHTML('booking',{session:S.n,consultant:'To be assigned by our team',date:pick.d,time:pick.t},['preferred'])}`;
+  else h+='<p class="note">Choose a preferred date and time. We confirm your appointment by email or WhatsApp within 48 hours.</p>';
   r=h}
- return phead('Book a session','Request your <em>session</em>','Choose a service, then a consultant and a time. We confirm by email or WhatsApp within 48 hours.')+sec('',`<div class="book"><div><h3 style="margin-bottom:.8rem">Consultations</h3>${grp('c')}<h3 style="margin:1.5rem 0 .8rem">Therapy sessions</h3>${grp('t')}</div><div class="right">${r}</div></div>`)}
-function availability(){
- const days=new Date(mo.getFullYear(),mo.getMonth()+1,0).getDate(),today=new Date();today.setHours(0,0,0,0);
- let c=['Su','Mo','Tu','We','Th','Fr','Sa'].map(x=>`<div class="h">${x}</div>`).join('');for(let i=0;i<mo.getDay();i++)c+='<div></div>';
- for(let i=1;i<=days;i++){const d=new Date(mo.getFullYear(),mo.getMonth(),i),s=d>=today?slots(d):[];c+=s.length?`<button data-go="/book" aria-label="${fmt(d)}, ${s.length} times">${i}<small>${s.length}</small></button>`:`<div style="color:var(--muted);opacity:.5">${i}</div>`}
- return phead('Availability','Availability <em>by month</em>','Indicative weekday availability. We confirm your time after you send a request.')+sec('',`<p><a href="#/book">← Back to booking</a></p><div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem">${ST.map((t,i)=>`<button class="btn sm${i===st?' navy':' ghost'}" data-st="${i}">${t.n}</button>`).join('')}</div><div class="mh"><button class="btn sm ghost" data-mo="-1" aria-label="Previous month">&lt;</button><b>${mo.toLocaleDateString('en-US',{month:'long',year:'numeric'})}</b><button class="btn sm ghost" data-mo="1" aria-label="Next month">&gt;</button></div><div class="cal">${c}</div>`)}
+ return phead('Book a session','Pick a <em>date and time</em>','Choose a service, then a day on the calendar. We confirm by email or WhatsApp within 48 hours.')+sec('',`<div class="book" id="bookbox"><div><h3 style="margin-bottom:.8rem">Consultations</h3>${grp('c')}<h3 style="margin:1.5rem 0 .8rem">Therapy sessions</h3>${grp('t')}</div><div class="right">${r}</div></div>`)}
 
 /* Footer */
 $('#ddp').innerHTML=['con','the','pro'].map(g=>`<div class="ddc"><h4>${G[g]}</h4>${SV.concat(PG).filter(x=>x.g===g).map(x=>`<a href="#/services/${x.k}">${x.n}</a>`).join('')}<a class="all" href="#/category/${g}">View all →</a></div>`).join('');
@@ -222,12 +214,36 @@ $('#topwa').innerHTML=ic('wa')+'<span>'+PH+'</span>';
 
 /* Router */
 let cur=MP?window.PAGE:((location.hash||'#/').slice(1)||'/'),init=true;
-const NK={home:'home',services:'services',category:'services',staff:'about',pricing:'pricing',about:'about',contact:'contact'};
+const NK={home:'home',services:'services',category:'services',pricing:'pricing',about:'about',contact:'contact'};
+function liftPill(){const f=$('#foot'),r=$('#rolefab');if(!f||!r)return;const o=Math.max(0,window.innerHeight-f.getBoundingClientRect().top);r.style.setProperty('--lift',Math.round(o)+'px')}
+addEventListener('scroll',()=>requestAnimationFrame(liftPill),{passive:true});addEventListener('resize',liftPill);
+const waUrl=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+function waText(p,P){const hi='Hello Adaptive Learning Support, ';
+ const nm=k=>{const e=SV.find(x=>x.k===k)||PG.find(x=>x.k===k);return e&&e.n};
+ const GN={con:'consultations',the:'therapy sessions',pro:'programmes'};
+ if(p==='services'&&P[1]){const n=nm(P[1]);if(n)return n==='Free intro consultation'?hi+'I’d like to book the free 20-minute intro consultation.':hi+'I’d like to know more about “'+n+'”.'}
+ if(p==='category'&&GN[P[1]])return hi+'I’d like to know more about your '+GN[P[1]]+'.';
+ if(p==='pricing')return hi+'I’d like to ask about pricing.';
+ if(p==='careers')return hi+'I’d like to ask about applying for a role with your team.';
+ if(p==='contact')return hi+'I have a question about your services.';
+ if(p==='faqs')return hi+'I have a question that isn’t answered in your FAQs.';
+ if(p==='about')return hi+'I’d like to learn more about your team and services.';
+ if(p==='learn'){const g=GU[(+P[1]||0)-1];return g?hi+'I read your guide “'+g.t+'” and would like some advice.':hi+'I’d like some advice on supporting my child’s learning.'}
+ if(p==='urgent-help')return hi+'I need some help and support.';
+ if(p==='book'){const S=sel>=0?SV[sel]:null;if(!S)return hi+'I’d like to book a session.';let m=hi+'I’d like to book “'+S.n+'”';if(pick&&pickDay)m+=' on '+pick.d+' at '+pick.t+' (UAE time)';else if(pickDay)m+=' on '+fmt(fromKey(pickDay));return m+'.'}
+ return hi+'I’d like to find out more about your services.'}
+function updateWA(p,P){const u=waUrl(waText(p,P));document.querySelectorAll('a[data-wa]').forEach(a=>a.setAttribute('href',u))}
+function jumpTarget(p,P){
+ if(p==='careers'||p==='contact')return '#enq';
+ if(p==='services')return P[1]?($('#connect .formbox')?'#connect .formbox':null):'#svcgrid';
+ if(p==='category')return '#svcgrid';
+ if(p==='book')return '#bookbox';
+ return null}
 function render(keep){
  const P=cur.replace(/^\//,'').split('/').filter(Boolean),p=P[0]||'home';
- if(init&&MP&&p==='book'){const q=new URLSearchParams(location.search);if(q.has('c')&&ST[+q.get('c')])st=+q.get('c');if(q.has('s')&&SV[+q.get('s')])sel=+q.get('s')}
+ if(init&&MP&&p==='book'){const q=new URLSearchParams(location.search);if(q.has('s')&&SV[+q.get('s')])sel=+q.get('s')}
  init=false;
- const V={home:home,services:()=>P[1]?service(P[1]):services(),category:()=>category(P[1]),pricing:pricing,learn:()=>learn(P[1]),about:about,staff:()=>staff(P[1]),careers:careers,contact:contact,faqs:faqs,'urgent-help':urgent,book:book,availability:availability};
+ const V={home:home,services:()=>P[1]?service(P[1]):services(),category:()=>category(P[1]),pricing:pricing,learn:()=>learn(P[1]),about:about,careers:careers,contact:contact,faqs:faqs,'urgent-help':urgent,book:book};
  $('#main').innerHTML=(V[p]||notFound)();
  const h1=$('#main h1');document.title=p==='home'?'Adaptive Learning Support | Specialist SEN Support':(h1?h1.textContent:'Adaptive Learning Support')+' | Adaptive Learning Support';
  document.querySelectorAll('nav [data-k]').forEach(a=>a.classList.toggle('on',a.dataset.k===NK[p]));$('.dd').classList.remove('open');$('#ddb').setAttribute('aria-expanded','false');
@@ -237,6 +253,8 @@ function render(keep){
  clearInterval(window.__sl);const sl=$('#slides');
  if(sl&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){let n=0;const im=sl.querySelectorAll('img');window.__sl=setInterval(()=>{im[n].classList.remove('on');n=(n+1)%im.length;im[n].classList.add('on')},7000)}
  if(!keep)window.scrollTo(0,0);
+ if(!keep){const T=jumpTarget(p,P);if(T){let y0=null;const jump=()=>{const f=$(T);if(!f)return;if(y0!==null&&Math.abs(scrollY-y0)>6)return;const de=document.documentElement;de.style.scrollBehavior='auto';y0=Math.max(0,f.getBoundingClientRect().top+scrollY-84);window.scrollTo(0,y0);de.style.scrollBehavior=''};jump();setTimeout(jump,150);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(jump)}}
+ liftPill();setTimeout(liftPill,250);updateWA(p,P);
 }
 function go(path){cur=path;try{location.hash='#'+path}catch(x){}render()}
 document.addEventListener('click',e=>{
@@ -249,11 +267,11 @@ document.addEventListener('click',e=>{
  const j=e.target.closest('[data-jump]');if(j){e.preventDefault();const t=document.getElementById(j.dataset.jump);t&&t.scrollIntoView({behavior:'smooth'});return}
  const g=e.target.closest('[data-go]');if(g){e.preventDefault();if(MP)location.href=F(g.dataset.go);else go(g.dataset.go);return}
  if(!MP){const l=e.target.closest('a[href^="#/"]');
-  if(l){e.preventDefault();if(l.dataset.s!==undefined){sel=+l.dataset.s;pick=null}if(l.dataset.st!==undefined){st=+l.dataset.st;pick=null}go(l.getAttribute('href').slice(1));return}}
- const a=e.target.closest('button[data-st],[data-i],[data-t],[data-bk],[data-mo]');if(!a)return;
- if(a.dataset.st!==undefined){st=+a.dataset.st;pick=null;render(true)}
- else if(a.dataset.i!==undefined){sel=+a.dataset.i;pick=null;render(true)}
- else if(a.dataset.t){pick={d:a.dataset.d,t:a.dataset.t};render(true)}
+  if(l){e.preventDefault();if(l.dataset.s!==undefined){sel=+l.dataset.s;pick=null;pickDay=null}go(l.getAttribute('href').slice(1));return}}
+ const a=e.target.closest('[data-i],[data-t],[data-day],[data-bk],[data-mo]');if(!a)return;
+ if(a.dataset.i!==undefined){sel=+a.dataset.i;pick=null;pickDay=null;render(true)}
+ else if(a.dataset.day){pickDay=a.dataset.day;pick=null;render(true)}
+ else if(a.dataset.t){pick={d:fmt(fromKey(pickDay)),t:a.dataset.t};render(true);const f=$('#f-booking');f&&f.scrollIntoView({behavior:'smooth',block:'center'})}
  else if(a.dataset.bk!==undefined){pick=null;render(true)}
  else if(a.dataset.mo){mo=new Date(mo.getFullYear(),mo.getMonth()+ +a.dataset.mo,1);render(true)}
 });
