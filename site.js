@@ -53,6 +53,7 @@ const FAQ=[
 ['How do I hire a learning support assistant?','Use the Hire a Learning Support Assistant form and choose parent or school enquiry. We’ll arrange a consultation, match you with a suitable LSA, and arrange trial sessions.'],
 ['How do I apply to join your team?','Go to the Careers page, fill in the form, and attach your CV. We’ll be in touch.'],
 ['What happens after I send an enquiry?','We reply within 48 hours by email or WhatsApp to arrange your free consultation or confirm your requested time.'],
+['Which days can I book?','Appointments are available seven days a week, including Saturdays and Sundays. Pick a day on the booking calendar and we’ll confirm your time by email or WhatsApp.'],
 ['How do I cancel or reschedule?','Message us on WhatsApp or by email as early as you can and we’ll find a new time.']];
 const GU=[
 {t:'Build a study plan that sticks',s:'A simple routine beats a perfect plan.',p:['Pick a fixed start time and place.','Work in short blocks, such as 20 minutes, then rest for 5.','Write down the next small step, not the whole task.','Review the plan each Sunday and adjust it.']},
@@ -184,7 +185,7 @@ function faqs(){return phead('FAQs','Frequently asked <em>questions</em>')+sec('
 /* Booking */
 let sel=-1,pickDay=null,pick=null,mo=new Date();mo=new Date(mo.getFullYear(),mo.getMonth(),1);
 const TM=['9:00 AM','10:30 AM','1:00 PM','2:30 PM','4:00 PM'];
-const slots=d=>{const w=d.getDay();if(w===0||w===6)return[];const s=d.getDate()+d.getMonth();return TM.filter((_,i)=>(i+s)%3!==0)};
+const slots=d=>{const s=d.getDate()+d.getMonth();return TM.filter((_,i)=>(i+s)%3!==0)};
 const fmt=d=>d.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
 const dkey=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const fromKey=k=>{const a=k.split('-');return new Date(+a[0],+a[1]-1,+a[2])};
@@ -203,9 +204,9 @@ function book(){
  else{let h=`<h2 style="font-size:1.5rem">${S.n}</h2><p style="color:var(--muted)">${lenp(S)}. ${S.t}</p><h3>1. Pick a date</h3>${calHTML()}`;
   if(pickDay){const d=fromKey(pickDay),sl=slots(d);h+=`<h3 style="margin-top:1.4rem">2. Pick a time on ${fmt(d)} (UAE time)</h3><div class="times">${sl.map(t=>`<button class="t" data-t="${t}" aria-pressed="${!!(pick&&pick.t===t)}">${t}</button>`).join('')}</div>`}
   if(pick)h+=`<h3 style="margin-top:1.4rem">3. Your details</h3>${formHTML('booking',{session:S.n,consultant:'To be assigned by our team',date:pick.d,time:pick.t},['preferred'])}`;
-  else h+='<p class="note">Choose a preferred date and time. We confirm your appointment by email or WhatsApp within 48 hours.</p>';
+  else h+='<p class="note">Appointments are available 7 days a week, including Saturdays and Sundays. We confirm your appointment by email or WhatsApp within 48 hours.</p>';
   r=h}
- return phead('Book a session','Pick a <em>date and time</em>','Choose a service, then a day on the calendar. We confirm by email or WhatsApp within 48 hours.')+sec('',`<div class="book" id="bookbox"><div><h3 style="margin-bottom:.8rem">Consultations</h3>${grp('c')}<h3 style="margin:1.5rem 0 .8rem">Therapy sessions</h3>${grp('t')}</div><div class="right">${r}</div></div>`)}
+ return phead('Book a session','Pick a <em>date and time</em>','Choose a service, then a day on the calendar. Appointments are available 7 days a week, including Saturdays and Sundays.')+sec('',`<div class="book" id="bookbox"><div><h3 style="margin-bottom:.8rem">Consultations</h3>${grp('c')}<h3 style="margin:1.5rem 0 .8rem">Therapy sessions</h3>${grp('t')}</div><div class="right">${r}</div></div>`)}
 
 /* Footer */
 $('#ddp').innerHTML=['con','the','pro'].map(g=>`<div class="ddc"><h4>${G[g]}</h4>${SV.concat(PG).filter(x=>x.g===g).map(x=>`<a href="#/services/${x.k}">${x.n}</a>`).join('')}<a class="all" href="#/category/${g}">View all →</a></div>`).join('');
@@ -233,6 +234,11 @@ function waText(p,P){const hi='Hello Adaptive Learning Support, ';
  if(p==='book'){const S=sel>=0?SV[sel]:null;if(!S)return hi+'I’d like to book a session.';let m=hi+'I’d like to book “'+S.n+'”';if(pick&&pickDay)m+=' on '+pick.d+' at '+pick.t+' (UAE time)';else if(pickDay)m+=' on '+fmt(fromKey(pickDay));return m+'.'}
  return hi+'I’d like to find out more about your services.'}
 function updateWA(p,P){const u=waUrl(waText(p,P));document.querySelectorAll('a[data-wa]').forEach(a=>a.setAttribute('href',u))}
+let navN=0;
+function parentOf(p,P){if(p==='services'&&P[1]){const e=SV.find(x=>x.k===P[1])||PG.find(x=>x.k===P[1]);return e?'/category/'+e.g:'/services'}if(p==='category')return '/services';if(p==='learn'&&P[1])return '/learn';return '/'}
+function goBack(){const P=cur.replace(/^\//,'').split('/').filter(Boolean),p=P[0]||'home';let same=false;
+ if(MP){try{same=!!document.referrer&&new URL(document.referrer).origin===location.origin&&history.length>1}catch(e){}}else same=navN>0;
+ if(same){if(!MP)navN--;history.back()}else{const t=parentOf(p,P);if(MP)location.href=F(t);else go(t)}}
 function jumpTarget(p,P){
  if(p==='careers'||p==='contact')return '#enq';
  if(p==='services')return P[1]?($('#connect .formbox')?'#connect .formbox':null):'#svcgrid';
@@ -249,6 +255,7 @@ function render(keep){
  document.querySelectorAll('nav [data-k]').forEach(a=>a.classList.toggle('on',a.dataset.k===NK[p]));$('.dd').classList.remove('open');$('#ddb').setAttribute('aria-expanded','false');
  $('#nav').classList.remove('open');{const mm=$('#mm');document.body.classList.remove('menuopen');mm.classList.remove('open');mm.setAttribute('aria-expanded','false');mm.setAttribute('aria-label','Open menu')}
  fixLinks(document);
+ $('#backbtn').hidden=(p==='home');
  {const rf=$('#rolefab');let ds=false;try{ds=sessionStorage.getItem('rolex')==='1'}catch(e){}rf.hidden=ds||p==='careers'}
  clearInterval(window.__sl);const sl=$('#slides');
  if(sl&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){let n=0;const im=sl.querySelectorAll('img');window.__sl=setInterval(()=>{im[n].classList.remove('on');n=(n+1)%im.length;im[n].classList.add('on')},7000)}
@@ -256,9 +263,10 @@ function render(keep){
  if(!keep){const T=jumpTarget(p,P);if(T){let y0=null;const jump=()=>{const f=$(T);if(!f)return;if(y0!==null&&Math.abs(scrollY-y0)>6)return;const de=document.documentElement;de.style.scrollBehavior='auto';y0=Math.max(0,f.getBoundingClientRect().top+scrollY-84);window.scrollTo(0,y0);de.style.scrollBehavior=''};jump();setTimeout(jump,150);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(jump)}}
  liftPill();setTimeout(liftPill,250);updateWA(p,P);
 }
-function go(path){cur=path;try{location.hash='#'+path}catch(x){}render()}
+function go(path){cur=path;navN++;try{location.hash='#'+path}catch(x){}render()}
 document.addEventListener('click',e=>{
  const sb=e.target.closest('button[type="submit"]');if(sb&&sb.form&&sb.form.dataset.key){e.preventDefault();doForm(sb.form);return}
+ if(e.target.closest('#backbtn')){goBack();return}
  if(e.target.closest('#ddb')){const o=$('.dd').classList.toggle('open');$('#ddb').setAttribute('aria-expanded',o);return}
  if(!e.target.closest('.dd'))$('.dd').classList.remove('open');
  if(e.target.closest('#mm')){const o=$('#nav').classList.toggle('open');const mm=$('#mm');mm.classList.toggle('open',o);document.body.classList.toggle('menuopen',o);mm.setAttribute('aria-expanded',o);mm.setAttribute('aria-label',o?'Close menu':'Open menu');return}

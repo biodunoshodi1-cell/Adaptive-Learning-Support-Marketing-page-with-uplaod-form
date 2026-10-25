@@ -227,3 +227,8 @@ body.menuopen .rolefab{display:none}
 .mh button[disabled]{opacity:.35;cursor:not-allowed}
 .cal{max-width:100%}
 #enq,#connect .formbox,#bookbox,#svcgrid{scroll-margin-top:84px}
+.backbtn{display:inline-flex;align-items:center;gap:.35rem;background:var(--soft);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.5rem .95rem .5rem .75rem;font:600 .9rem "Inter",system-ui,sans-serif;cursor:pointer;flex:none}.backbtn:hover{border-color:var(--accent)}
+.bar{gap:.9rem}@media (max-width:600px){.backbtn{padding:.5rem .8rem .5rem .6rem}}
+.brand{gap:0}.brand img{width:auto;height:54px;background:none;border-radius:0}.fl1 img{width:auto;height:40px;background:none;border-radius:0}
+@media (max-width:600px){.brand img{height:42px}}
+.brand img{height:58px;width:auto}@media (max-width:600px){.brand img{height:48px}}.fl1 img{height:44px}
