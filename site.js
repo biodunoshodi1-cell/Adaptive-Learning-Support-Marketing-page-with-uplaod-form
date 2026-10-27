@@ -146,7 +146,7 @@ const vid=()=>sec('alt',`<div class="split"><div><span class="eyebrow">Watch</sp
 const DL={con:'Choose a consultation',the:'Choose a therapy session',pro:'Choose a programme'};
 const grpCard=(g,lite)=>{const it=SV.concat(PG).filter(x=>x.g===g);return `<article class="card gc${lite?' lite':''}">${lite?'':`<div class="gimg"><img src="${IMG[CI[g]]}" alt="" loading="lazy"></div>`}<div class="gb"><h3>${G[g]}</h3><p>${CD[g]}</p><details class="dd2"><summary>${DL[g]}</summary><ul class="lk">${it.map(x=>`<li><a href="#/services/${x.k}">${x.n}</a></li>`).join('')}</ul></details><a class="more" href="#/category/${g}">View all</a></div></article>`};
 const pheadI=(e,h,l,img)=>`<section class="phead"><div class="wrap split"><div>${eb(e)}<h1>${h}</h1><p class="lead">${l}</p></div><div class="photo"><img src="${IMG[img]}" alt="" width="640" height="420"></div></div></section>`;
-const vbox=()=>`<div><div class="vidp"><video controls playsinline autoplay muted preload="metadata" poster="${IMG.vposter}" aria-label="Adaptive Learning Support introduction video"><source src="${IMG.vsrc}" type="video/mp4">Your browser can’t play this video.</video></div></div>`;
+const vbox=()=>`<div><div class="vidp"><video controls playsinline autoplay muted loop preload="metadata" poster="${IMG.vposter}" aria-label="Adaptive Learning Support introduction video"><source src="${IMG.vsrc}" type="video/mp4">Your browser can’t play this video.</video></div></div>`;
 function home(){return `
 <section class="hero"><div class="wrap split"><div>${eb('Specialist SEN support')}<h1>Learning that <em>adapts</em> to every child</h1>
 <p class="tl">Support that strengthens every learner.</p>

@@ -232,3 +232,4 @@ body.menuopen .rolefab{display:none}
 .brand{gap:0}.brand img{width:auto;height:54px;background:none;border-radius:0}.fl1 img{width:auto;height:40px;background:none;border-radius:0}
 @media (max-width:600px){.brand img{height:42px}}
 .brand img{height:58px;width:auto}@media (max-width:600px){.brand img{height:48px}}.fl1 img{height:44px}
+.vidp{width:100%;max-width:none;aspect-ratio:16/9}.vidp video{object-fit:cover}
